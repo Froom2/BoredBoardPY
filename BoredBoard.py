@@ -42,8 +42,7 @@ def printtasks():
 
 def suggest():
     # Runs suggestion loop
-    print("You should", random.choice(tasks))
-    answer = str.lower(input("Do you want to do that? (yes/no) "))
+    answer = "no"
 
     while answer != "yes":
         print("You should", random.choice(tasks))
@@ -58,33 +57,41 @@ def suggest():
 # Introduction
 optionchoice = introduction()
 
-# Option 1 - Print tasks, then return to introduction
-if optionchoice == 1:
-    printtasks()
+while optionchoice:
 
-# Option 2 - Add an activity, then return to introduction
-elif optionchoice == 2:
-    print("Function not added yet")
+    # Option 1 - Print tasks, then return to introduction
+    if optionchoice == 1:
+        printtasks()
 
-# Option 3 - Remove activity, then return to introduction
-elif optionchoice == 3:
-    print("Function not added yet")
+    # Option 2 - Add an activity, then return to introduction
+    elif optionchoice == 2:
+        print("Function not added yet")
+        input("Press any key to return to the menu.")
 
-# Option 4 - Change an activity, then return to introduction
-elif optionchoice == 4:
-    print("Function not added yet")
+    # Option 3 - Remove activity, then return to introduction
+    elif optionchoice == 3:
+        print("Function not added yet")
+        input("Press any key to return to the menu.")
 
-# Option 5 - Run suggestions, then exit
-elif optionchoice == 5:
-    suggest()
+    # Option 4 - Change an activity, then return to introduction
+    elif optionchoice == 4:
+        print("Function not added yet")
+        input("Press any key to return to the menu.")
 
-# Option 6 - Exit
-elif optionchoice == 6:
-    # TODO functionalise this then put at the end of the other things it needs to be in
-    input("Press any key to confirm exit")
+    # Option 5 - Run suggestions, then exit
+    elif optionchoice == 5:
+        suggest()
+        break
 
-# Other - Print error then return to introduction
-else:
-    print("Sorry that isn't a valid choice.")
+    # Option 6 - Exit
+    elif optionchoice == 6:
+        input("Press any key to confirm exit")
+        break
 
-# TODO Enable changing/adding/removing things
+    # Other - Print error then return to introduction
+    else:
+        print("Sorry that isn't a valid choice.")
+        input("Press any key to return to the menu.")
+
+    optionchoice = introduction()
+
