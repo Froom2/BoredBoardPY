@@ -3,21 +3,26 @@
 
 import random
 
-tasks = ["study Java.",
-         "wash up.",
-         "listen to a podcast.",
-         "empty a box!",
-         "read a book.",
-         "learn some more Python.",
-         "hoover.",
-         "clean the bathtub and sink.",
-         "clean the toilet.",
-         "clean the kitchen surfaces.",
-         "mop a floor.",
-         "do some decorating.",
-         "play guitar.",
-         "Learn Python!"]
+# Tasks now stored in separate text file.
+# tasks = ["study Java.",
+#         "wash up.",
+#         "listen to a podcast.",
+#         "empty a box!",
+#         "read a book.",
+#         "learn some more Python.",
+#         "hoover.",
+#         "clean the bathtub and sink.",
+#         "clean the toilet.",
+#         "clean the kitchen surfaces.",
+#         "mop a floor.",
+#         "do some decorating.",
+#         "play guitar.",
+#         "Learn Python!"]
 
+# Open the text file containing the tasks
+text_file = open("tasks.txt", "r")
+# Read the tasks into a list
+tasks = text_file.readlines()
 
 def introduction():
     # Introduction to the program
@@ -44,17 +49,21 @@ def suggest():
     # Runs suggestion loop
     answer = "no"
 
+    # Make suggestions until input is 'yes'
     while answer != "yes":
+        # Suggest a random task from the list
         print("You should", random.choice(tasks))
+        # prompt for input if person wants to do that task
         answer = str.lower(input("Do you want to do that? (yes/no) "))
+        # If no, mirror response and continue loop
         if answer != "yes":
             print("you said ", answer, "...")
+        # If yes, break loop
         if answer == "yes":
+            print("So now go do that!")
             break
 
-    print("So now go do that!")
-
-# Introduction
+# Run introduction
 optionchoice = introduction()
 
 while optionchoice:
@@ -90,8 +99,11 @@ while optionchoice:
 
     # Other - Print error then return to introduction
     else:
+        # TODO catch characters!
         print("Sorry that isn't a valid choice.")
         input("Press any key to return to the menu.")
 
     optionchoice = introduction()
 
+# Close the text file.
+text_file.close()
